@@ -1,0 +1,28 @@
+---
+// src/components/layout/Header.astro
+---
+
+<header class="fixed top-0 left-0 w-full z-50 bg-kong-black/90 backdrop-blur-sm border-b border-kong-yellow">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-full border border-kong-yellow/30 group-hover:border-kong-yellow transition-colors">
+        <img src="/images/logo.png" alt="Kong Digital Logo" class="w-full h-full object-cover" />
+      </div>
+      <span class="font-heading font-black italic text-2xl text-kong-yellow tracking-tighter">KONG DIGITAL</span>
+    </a>
+
+    <!-- Nav Links -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#services" class="font-bold text-sm bg-kong-yellow text-kong-black px-3 py-1">SERVICES</a>
+      <a href="#mentality" class="font-bold text-sm hover:text-kong-yellow transition-colors">MENTALITY</a>
+      <a href="#work" class="font-bold text-sm hover:text-kong-yellow transition-colors">WORK</a>
+      <a href="#contact" class="font-bold text-sm hover:text-kong-yellow transition-colors">CONTACT</a>
+    </nav>
+
+    <!-- CTA Button -->
+    <a href="#contact" class="hidden md:inline-block bg-kong-yellow text-kong-black font-bold px-6 py-2 hover:bg-yellow-400 transition-colors">
+      START PROJECT
+    </a>
+  </div>
+</header>

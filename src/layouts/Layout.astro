@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>KONG DIGITAL | Dominate the Digital Jungle</title>
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,900&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-kong-black text-white font-sans antialiased overflow-x-hidden selection:bg-kong-yellow selection:text-kong-black">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	html {
+		scroll-behavior: smooth;
+	}
+	
+	/* Utility for the outlined text effect seen in the mentality section */
+	.text-outline {
+		color: transparent;
+		-webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+	}
+</style>

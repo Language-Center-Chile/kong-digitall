@@ -1,0 +1,79 @@
+---
+// src/components/sections/Services.astro
+---
+
+<section id="services" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <div class="mb-16">
+    <h3 class="text-kong-yellow font-bold text-sm tracking-widest uppercase mb-4">OUR WEAPONRY</h3>
+    <h2 class="font-heading font-black text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight leading-none">
+      PRECISION TOOLS FOR<br />
+      <span class="text-kong-yellow">TOTAL DOMINATION</span>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Card 1: Digital Marketing -->
+    <div class="lg:col-span-2 border border-kong-yellow bg-kong-dark p-8 md:p-12 relative overflow-hidden group">
+      <!-- Image Background Simulation -->
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+      
+      <div class="relative z-10 h-full flex flex-col justify-end">
+        <div class="mb-8">
+          <!-- Target Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-kong-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <path d="m22 2-6 6"></path>
+          </svg>
+        </div>
+        <h3 class="font-heading font-black text-3xl md:text-4xl text-white uppercase mb-4">DIGITAL MARKETING</h3>
+        <p class="text-kong-gray text-lg max-w-lg">
+          Aggressive growth strategies fueled by data and primal instinct. We don't just reach audiences; we conquer markets.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2: Web Development -->
+    <div class="bg-kong-yellow p-8 md:p-12 flex flex-col justify-between">
+      <div>
+        <!-- Terminal Icon -->
+        <div class="w-14 h-14 border-4 border-kong-black flex items-center justify-center mb-8">
+          <span class="font-bold text-kong-black text-2xl">&gt;_</span>
+        </div>
+        <h3 class="font-heading font-black text-3xl md:text-4xl text-kong-black uppercase leading-none mb-6">WEB<br />DEVELOPMENT</h3>
+      </div>
+      <p class="text-kong-black font-bold text-lg">
+        Unbreakable architectures. High-speed performance. Systems built to survive the digital evolution.
+      </p>
+    </div>
+
+    <!-- Card 3: Brand Strategy -->
+    <div class="bg-kong-dark p-8 md:p-12 border border-transparent hover:border-kong-gray transition-colors">
+      <div class="mb-8">
+        <!-- Shield Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-kong-yellow fill-kong-yellow" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      </div>
+      <h3 class="font-heading font-black text-3xl text-white uppercase mb-4">BRAND STRATEGY</h3>
+      <p class="text-kong-gray text-lg">
+        Defining your territory. We build visual identities that command respect and project absolute authority.
+      </p>
+    </div>
+
+    <!-- Card 4: Custom Arsenal -->
+    <div class="lg:col-span-2 border-2 border-kong-yellow bg-kong-black p-8 md:p-12 relative overflow-hidden">
+      <div class="relative z-10 flex flex-col justify-center h-full">
+        <h3 class="font-heading font-black text-4xl text-white uppercase mb-2">CUSTOM ARSENAL</h3>
+        <p class="text-kong-yellow font-bold uppercase tracking-widest">
+          TAILORED SOLUTIONS FOR COMPLEX BATTLES.
+        </p>
+      </div>
+      <!-- Decorative Element -->
+      <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-kong-yellow transform rotate-12 flex items-center justify-center">
+        <span class="text-kong-black font-heading font-black text-6xl opacity-50">&quot;&quot;</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+// src/components/sections/Hero.astro
+---
+
+<section class="relative h-screen min-h-[600px] flex items-center justify-center pt-20 overflow-hidden">
+  <!-- Background Image Overlay (Simulando la imagen oscura de la ciudad) -->
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat opacity-30"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-kong-black/80 via-transparent to-kong-black"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center max-w-5xl mx-auto px-4 flex flex-col items-center">
+    <h1 class="font-heading font-black text-6xl md:text-8xl lg:text-[7.5rem] leading-[0.9] text-kong-yellow uppercase tracking-tight mb-8 drop-shadow-lg">
+      DOMINATE THE<br />
+      DIGITAL JUNGLE
+    </h1>
+    
+    <p class="font-heading font-bold text-2xl md:text-3xl text-white italic tracking-wide mb-12">
+      RAW POWER. PRECISE EXECUTION.<br />
+      UNSTOPPABLE GROWTH.
+    </p>
+
+    <!-- Buttons -->
+    <div class="flex flex-col sm:flex-row gap-6 w-full sm:w-auto justify-center">
+      <a href="#services" class="bg-kong-yellow text-kong-black font-bold px-10 py-4 text-sm md:text-base hover:bg-yellow-400 transition-colors uppercase text-center tracking-widest">
+        UNLEASH POWER
+      </a>
+      <a href="#work" class="border-2 border-kong-yellow text-kong-yellow font-bold px-10 py-4 text-sm md:text-base hover:bg-kong-yellow hover:text-kong-black transition-colors uppercase text-center tracking-widest bg-black/30 backdrop-blur-sm">
+        VIEW ARSENAL
+      </a>
+    </div>
+  </div>
+</section>
