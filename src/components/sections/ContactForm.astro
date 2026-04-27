@@ -1,0 +1,74 @@
+---
+---
+
+<section id="contact" class="pb-32 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto scroll-mt-28">
+  <div class="border border-kong-yellow/40 bg-kong-dark/40 backdrop-blur-sm p-8 md:p-12">
+    <div class="mb-10">
+      <span class="text-kong-yellow font-bold text-sm tracking-[0.3em] uppercase">CONTACT</span>
+      <h2 class="mt-4 font-heading font-black text-3xl md:text-5xl uppercase tracking-tight">
+        Start the project
+      </h2>
+      <p class="mt-4 text-kong-gray text-lg max-w-2xl">
+        Tell us what you need, and we’ll get back to you with a clear, actionable proposal.
+      </p>
+    </div>
+
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-6" onsubmit="event.preventDefault();">
+      <label class="block">
+        <span class="text-sm font-bold tracking-widest uppercase text-white/80">Nombre</span>
+        <input
+          name="name"
+          autocomplete="name"
+          required
+          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30"
+          placeholder="Tu nombre"
+        />
+      </label>
+
+      <label class="block">
+        <span class="text-sm font-bold tracking-widest uppercase text-white/80">Email</span>
+        <input
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30"
+          placeholder="tu@email.com"
+        />
+      </label>
+
+      <label class="block md:col-span-2">
+        <span class="text-sm font-bold tracking-widest uppercase text-white/80">Empresa</span>
+        <input
+          name="company"
+          autocomplete="organization"
+          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30"
+          placeholder="Opcional"
+        />
+      </label>
+
+      <label class="block md:col-span-2">
+        <span class="text-sm font-bold tracking-widest uppercase text-white/80">Mensaje</span>
+        <textarea
+          name="message"
+          required
+          rows="6"
+          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30 resize-none"
+          placeholder="Describe tu objetivo, plazos y contexto"
+        ></textarea>
+      </label>
+
+      <div class="md:col-span-2 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between pt-2">
+        <p class="text-sm text-white/50">
+          Al enviar, aceptas que te contactemos por email.
+        </p>
+        <button
+          type="submit"
+          class="bg-kong-yellow text-kong-black font-bold px-10 py-4 text-sm md:text-base hover:bg-yellow-400 transition-colors uppercase tracking-[0.2em]"
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
