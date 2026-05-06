@@ -10,5 +10,11 @@ export default defineConfig({
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['.sslip.io'],
+    },
+    preview: {
+      allowedHosts: ['.sslip.io'],
+    },
   },
 });
