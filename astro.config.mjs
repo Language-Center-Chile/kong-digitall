@@ -11,10 +11,10 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ['.sslip.io'],
+      allowedHosts: ['.sslip.io', 'kong-digital.com', '.kong-digital.com'],
     },
     preview: {
-      allowedHosts: ['.sslip.io'],
+      allowedHosts: ['.sslip.io', 'kong-digital.com', '.kong-digital.com'],
     },
   },
 });
