@@ -13,14 +13,14 @@
       </p>
     </div>
 
-    <form class="grid grid-cols-1 md:grid-cols-2 gap-6" onsubmit="event.preventDefault();">
+    <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <label class="block">
         <span class="text-sm font-bold tracking-widest uppercase text-white/80">Name</span>
         <input
           name="name"
           autocomplete="name"
           required
-          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30"
+          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30 transition-colors"
           placeholder="Your name"
         />
       </label>
@@ -32,7 +32,7 @@
           type="email"
           autocomplete="email"
           required
-          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30"
+          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30 transition-colors"
           placeholder="you@email.com"
         />
       </label>
@@ -42,7 +42,7 @@
         <input
           name="company"
           autocomplete="organization"
-          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30"
+          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30 transition-colors"
           placeholder="Optional"
         />
       </label>
@@ -53,10 +53,13 @@
           name="message"
           required
           rows="6"
-          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30 resize-none"
+          class="mt-2 w-full bg-kong-black/40 border border-white/10 focus:border-kong-yellow focus:ring-0 outline-none px-4 py-3 text-white placeholder:text-white/30 resize-none transition-colors"
           placeholder="Describe your goal, timeline, and context"
         ></textarea>
       </label>
+
+      <!-- Status notification area -->
+      <div id="form-status" class="hidden md:col-span-2 p-4 text-sm font-medium border"></div>
 
       <div class="md:col-span-2 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between pt-2">
         <p class="text-sm text-white/50">
@@ -64,11 +67,80 @@
         </p>
         <button
           type="submit"
-          class="bg-kong-yellow text-kong-black font-bold px-10 py-4 text-sm md:text-base hover:bg-yellow-400 transition-colors uppercase tracking-[0.2em]"
+          id="contact-submit-btn"
+          class="bg-kong-yellow text-kong-black font-bold px-10 py-4 text-sm md:text-base hover:bg-yellow-400 transition-all uppercase tracking-[0.2em] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
-          Sending
+          <span id="btn-text">SEND MESSAGE</span>
         </button>
       </div>
     </form>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
+  const btnText = document.getElementById('btn-text');
+  const formStatus = document.getElementById('form-status');
+
+  const WEBHOOK_URL =
+    import.meta.env.PUBLIC_N8N_WEBHOOK_URL ||
+    'https://n8n-es8k0oos8kks4s8gc0gsw08w.72.62.165.86.sslip.io/webhook-test/f84469ae-d794-4d8d-8093-b9ff1967ca5f';
+
+  if (form && submitBtn && btnText && formStatus) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Clear any previous status
+      formStatus.className = 'hidden md:col-span-2 p-4 text-sm font-medium border';
+      formStatus.textContent = '';
+
+      // Set loading state
+      const originalText = btnText.textContent || 'SEND MESSAGE';
+      submitBtn.disabled = true;
+      btnText.textContent = 'SENDING...';
+
+      try {
+        const formData = new FormData(form);
+        const payload = {
+          name: formData.get('name')?.toString().trim(),
+          email: formData.get('email')?.toString().trim(),
+          company: formData.get('company')?.toString().trim() || '',
+          message: formData.get('message')?.toString().trim(),
+          submittedAt: new Date().toISOString(),
+          source: window.location.href,
+        };
+
+        const response = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          // Success
+          formStatus.className =
+            'block md:col-span-2 p-4 text-sm font-medium border border-green-500/50 bg-green-950/40 text-green-300';
+          formStatus.textContent =
+            '✓ Thank you! Your message has been sent successfully. We will get back to you soon.';
+          form.reset();
+        } else {
+          throw new Error(`Server responded with status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error('Error sending form to n8n webhook:', error);
+        formStatus.className =
+          'block md:col-span-2 p-4 text-sm font-medium border border-red-500/50 bg-red-950/40 text-red-300';
+        formStatus.textContent =
+          '✕ There was an error sending your message. Please try again or reach out to us directly.';
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = originalText;
+      }
+    });
+  }
+</script>
+
